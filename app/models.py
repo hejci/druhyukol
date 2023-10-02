@@ -37,6 +37,15 @@ class typ_vozidla(Model):
     def __repr__(self):
         return self.name
 
+class motor(Model):
+    id = Column(Integer, primary_key=True)
+    vyrobce_vozidla = Column(String(30))
+    vyrobce_id = Column(Integer, ForeignKey("vyrobce.id"), nullable=False)
+    vyrobce = relationship("vyrobce")
+
+    def __repr__(self):
+        return self.name
+
 class Contact(Model):
     id = Column(Integer, primary_key=True)
     name = Column(String(150), unique=True, nullable=False)
